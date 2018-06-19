@@ -10,6 +10,7 @@ var app = express();
 
 app.use(bodyParser.json());
 
+//POST todo
 app.post('/todos', (req, res) => {
     var todo = new Todo({
         text: req.body.text
@@ -22,6 +23,7 @@ app.post('/todos', (req, res) => {
     })
 });
 
+//GET todos
 app.get('/todos', (req, res) => {
     Todo.find().then((todos) => {
         res.send({todos});
@@ -30,6 +32,7 @@ app.get('/todos', (req, res) => {
     });
 });
 
+//GET todo by ID
 app.get('/todos/:id', (req, res) => {
     var id = req.params.id;
 
@@ -47,6 +50,7 @@ app.get('/todos/:id', (req, res) => {
     });
 });
 
+//DELETE todo by ID
 app.delete('/todos/:id', (req, res) => {
     var id = req.params.id;
 
